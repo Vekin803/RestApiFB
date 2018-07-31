@@ -1,5 +1,5 @@
 # RestApiFB
-Rest Api with FireBird database with Python
+Rest Api with FireBird database with Python 3
 
 Frameworks used:
 - Flask
