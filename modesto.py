@@ -6,8 +6,8 @@ from flask_restful import Resource, Api
 app = Flask('__name__')
 api = Api(app)
 
-class Student(Resource):
-    def get(self, name):
+class FormasPago(Resource):
+    def get(self):
         con = fdb.connect( dsn='192.168.1.252:W:\STECCS_MGV.FDB',
                            user='sysdba',
                            password='masterkey',
@@ -20,6 +20,6 @@ class Student(Resource):
         con.close()
         return {'Items': items}
 
-api.add_resource(Student, '/student/<string:name>')
+api.add_resource(FormasPago, '/formaspago/')
 
 app.run(port=5000)
