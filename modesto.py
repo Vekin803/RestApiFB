@@ -8,7 +8,7 @@ api = Api(app)
 
 class Student(Resource):
     def get(self, name):
-        con = fdb.connect( dsn='C:\\Users\modes\Documents\Software MSM\Servitec CS\STECCS_MGV.FDB',
+        con = fdb.connect( dsn='192.168.1.252:W:\STECCS_MGV.FDB',
                            user='sysdba',
                            password='masterkey',
                            charset='UTF8')

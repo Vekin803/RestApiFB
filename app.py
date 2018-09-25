@@ -1,12 +1,10 @@
-import flask from Flask
+from flask import Flask
 
+app = Flask(__name__)
 
-@app.route('/')
-# GET
-# POST
-# UPDATE
-# DELETE
-
+@app.route("/")
+def main():
+    return "Welcome!"
 
 if __name__ == "__main__":
-app = Flask(__name__)
+    app.run()
