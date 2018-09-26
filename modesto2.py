@@ -14,14 +14,12 @@ class FormasPago(Resource):
                            charset='UTF8')
         cur = con.cursor()
         results = cur.execute("select * from FORMAS_DE_PAGO")
-        print (results)
+        columns = [column[0] for column in cur.description]
         items = []
-        for result in results:
-            i = 0
-            items.append(str([cur.description][fdb.DESCRIPTION_NAME][i][i]))
-            i += 1
+        for row in cur.fetchall():
+            items.append(dict(zip(columns, row)))
         con.close()
-        return results
+        return items
 
 api.add_resource(FormasPago, '/formaspago/')
 
