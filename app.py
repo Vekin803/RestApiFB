@@ -3,8 +3,7 @@ from flask import Flask, jsonify, json
 from flask_restful import Api
 from flask_cors import CORS
 
-from connect_fdb import Consulta
-from resources.formaspago import FormasPagos
+from resources.formaspago import FormasPago
 from resources.user import UserName
 
 
