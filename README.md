@@ -5,3 +5,4 @@ Frameworks used:
 - Flask
 - Flask-RESTful
 - Flask-JWT
+- fdb
