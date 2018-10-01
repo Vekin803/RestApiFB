@@ -1,21 +1,16 @@
 import fdb
 from flask import Flask, jsonify, json
-from flask_restful import Resource, Api
+from flask_restful import Api
 from flask_cors import CORS
+
 from connect_fdb import Consulta
+from resources.formaspago import FormasPagos
+from resources.user import UserName
+
 
 app = Flask('__name__')
 api = Api(app)
 CORS(app)
-
-
-class FormasPago(Resource):
-    def get(self):
-        return Consulta("select * from FORMAS_DE_PAGO")
-
-class UserName(Resource):
-    def get(self):
-        return Consulta("select Nombre, Telefono1, Email from CLIENTES")
 
 
 api.add_resource(FormasPago, '/formaspago/')
