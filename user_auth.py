@@ -12,7 +12,7 @@ class User(Resource):
 
     @classmethod
     def find_by_username(cls, email):
-        connection = fdb.connect( dsn='192.168.1.252:W:\STECCS_MGV.FDB',
+        connection = fdb.connect( dsn='192.168.1.252:W:\STECCS_MGV_TEST.FDB',
                            user='sysdba',
                            password='masterkey',
                            charset='UTF8')
