@@ -2,7 +2,7 @@ import fdb
 from flask import Flask, jsonify, json
 from flask_restful import Api
 from flask_cors import CORS
-from flask_jwt import JWT, jwt_required
+from flask_jwt import JWT
 
 from resources.formaspago import FormasPago
 from resources.users import UserName

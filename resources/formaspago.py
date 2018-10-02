@@ -1,6 +1,6 @@
 
 from flask_restful import Resource
-from flask_jwt import JWT, jwt_required
+from flask_jwt import jwt_required
 
 from connect_fdb import Consulta
 
