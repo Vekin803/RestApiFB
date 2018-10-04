@@ -5,11 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no"/>
   <title>TITULO</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="css/login.css"/>
+  <link rel="stylesheet" href="/static/css/login.css"/>
 </head>
 <body>
   <div class="login-dark">
-    <form action="/auth" method="post">
+    <form action="/login" method="post">
       <h2 class="sr-only">Login form</h2>
       <div class="illustration">
         <ion-icon name="log-in"></ion-icon>
@@ -380,12 +380,19 @@
       console.log(JSON.stringify(form_data))
       $.ajax({
           type: "POST",
-          url: '/auth',
+          url: '/login',
           contentType: 'application/json',
           dataType: 'json',
           data: JSON.stringify(form_data), // serializes the form's elements.
-          success: function (data) {
-              var token = data  // display the returned data in the console.
+          success: function (user) {
+              if(user) {
+                console.log(user);
+                console.log(user[0].NOMBRE);
+                window.location.href = "https://www.google.com/";
+              } else {
+                alert('No hay usuario');
+              }
+              // var token = user // display the returned data in the console.
           }
       });
       e.preventDefault(); // block the traditional submission of the form.
