@@ -1,3 +1,4 @@
+from STR import app
 from flask_restful import Resource, reqparse
 from dbmanager import ConsultaSQL
 from flask_jwt_extended import (create_access_token, create_refresh_token,
@@ -9,7 +10,7 @@ parser.add_argument('username', help = 'Campo obligatorio', required = True)
 parser.add_argument('password', help = 'Campo obligatorio', required = True)
 
 
-@app.route('/login' methods=['GET', 'POST'])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if current_user.is_authenticated:
         return redirect(url_for('main.home'))
