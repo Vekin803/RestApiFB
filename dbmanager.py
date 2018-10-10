@@ -2,8 +2,7 @@ import fdb
 
 
 def ConsultaSQL(sql):
-    con = fdb.connect( dsn='192.168.1.252', 
-                       database='W:\STECCS_MGV_TEST.FDB',
+    con = fdb.connect( dsn='192.168.1.252:W:\STECCS_MGV_TEST.FDB',
                        user='sysdba',
                        password='masterkey',
                        charset='UTF8')

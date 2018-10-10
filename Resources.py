@@ -1,4 +1,3 @@
-from STR import app
 from flask_restful import Resource, reqparse
 from dbmanager import ConsultaSQL
 from flask_jwt_extended import (create_access_token, create_refresh_token,
@@ -9,20 +8,6 @@ parser = reqparse.RequestParser()
 parser.add_argument('username', help = 'Campo obligatorio', required = True)
 parser.add_argument('password', help = 'Campo obligatorio', required = True)
 
-
-@app.route('/login', methods=['GET', 'POST'])
-def login():
-    if current_user.is_authenticated:
-        return redirect(url_for('main.home'))
-    form = LoginForm()
-    if form.validate_on_submit():
-        user = ConsultaSQL("SELECT NOMBRE, EMAIL, CLAVE_WP FROM CLIENTES WHERE EMAIL = '{}'".format(data['email']))
-        login_user(user, remember=form.remember.data)
-        next_page = request.arg.get('next')
-        return redirect(next_page) if next_page else redirect(url_for('home'))
-    else:
-        flash('No se ha podido encontrar sus datos, porfavor revise el email y el password', 'danger')
-    return render_template('login.html', title='Login', form=form)
 
 class UserRegistration(Resource):
     def post(self):
@@ -86,15 +71,8 @@ class TokenRefresh(Resource):
 #        return bool(query)
 #
 
-#class UserLogin(Resource):
-#    def post(self):
-#        data = parser.parse_args()
-#        usuario = ConsultaSQL("SELECT FIRST 1 NOMBRE, CLAVE_WP FROM CLIENTES WHERE NOMBRE = '{}'".format(data.username))
-#        if usuario:
-#            return usuario[0]
-#        return False
 
 class ListUsuarios(Resource):
     @jwt_required
     def get(self):
-         return ConsultaSQL('SELECT FIRST 10 NOMBRE, CLAVE_WP FROM CLIENTES')
+        return ConsultaSQL('SELECT FIRST 10 NOMBRE, CLAVE_WP FROM CLIENTES')

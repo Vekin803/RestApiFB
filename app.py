@@ -24,7 +24,7 @@ jwt = JWTManager(app)
 def hola():
     return "Seleccione Petición"
 
-api.add_resource(Resources.UserLogin, '/api/login')
+api.add_resource(Resources.UserLogin, '/login')
 api.add_resource(Resources.ListUsuarios, '/users')
 
 
