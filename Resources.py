@@ -8,6 +8,21 @@ parser = reqparse.RequestParser()
 parser.add_argument('username', help = 'Campo obligatorio', required = True)
 parser.add_argument('password', help = 'Campo obligatorio', required = True)
 
+
+@app.route('/login' methods=['GET', 'POST'])
+def login():
+    if current_user.is_authenticated:
+        return redirect(url_for('main.home'))
+    form = LoginForm()
+    if form.validate_on_submit():
+        user = ConsultaSQL("SELECT NOMBRE, EMAIL, CLAVE_WP FROM CLIENTES WHERE EMAIL = '{}'".format(data['email']))
+        login_user(user, remember=form.remember.data)
+        next_page = request.arg.get('next')
+        return redirect(next_page) if next_page else redirect(url_for('home'))
+    else:
+        flash('No se ha podido encontrar sus datos, porfavor revise el email y el password', 'danger')
+    return render_template('login.html', title='Login', form=form)
+
 class UserRegistration(Resource):
     def post(self):
         data = parser.parse_args()

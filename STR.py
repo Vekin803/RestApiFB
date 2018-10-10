@@ -6,6 +6,7 @@ app = Flask(__name__)
 api = Api(app)
 
 import Resources
+
 app.config['JWT_SECRET_KEY'] = 'masterkey'
 #app.config['JWT_BLACKLIST_ENABLED'] = True
 app.config['JWT_BLACKLIST_TOKEN_CHECKS'] = ['access', 'refresh']
@@ -23,7 +24,7 @@ jwt = JWTManager(app)
 def hola():
     return "Seleccione Petición"
 
-api.add_resource(Resources.UserLogin, '/login')
+api.add_resource(Resources.UserLogin, '/api/login')
 api.add_resource(Resources.ListUsuarios, '/users')
 
 
